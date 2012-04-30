@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @teacher.name %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @teacher.first_name %>
+</p>
+<p>
+  <b>Lessons:</b>
+  <% @teacher.lessons.each do |lesson| %>
+    <p>start:  <%= lesson.start %> <br>
+       end: <%= lesson.end %></p>
+  <% end %>
+</p>
+
+<a href="/teachers/1/lessons/new">New Lesson</a>
+
+<%= link_to 'New Lesson', new_teacher_lesson_path %> |
+<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+<%= link_to 'Back', teachers_path %>

@@ -1,0 +1,31 @@
+<h1>Listing lessons</h1>
+
+<table>
+  <tr>
+    <th>Start</th>
+    <th>End</th>
+    <th>Type</th>
+    <th>Teacher</th>
+    <th>Pupil</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lessons.each do |lesson| %>
+  <tr>
+    <td><%= lesson.start %></td>
+    <td><%= lesson.end %></td>
+    <td><%= lesson.type %></td>
+    <td><%= lesson.teacher.name %> <%= lesson.teacher.first_name %></td>
+    <td><%= lesson.pupil.name + " " + lesson.pupil.first_name %> </td>
+    <td><%= link_to 'Show', lesson %></td>
+    <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+    <td><%= link_to 'Destroy', lesson, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lesson', new_lesson_path %>

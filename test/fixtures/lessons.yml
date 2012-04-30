@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2012-04-28 19:17:26
+  end: 2012-04-28 19:17:26
+  type: 
+  teacher: 
+  pupil: 
+
+two:
+  start: 2012-04-28 19:17:26
+  end: 2012-04-28 19:17:26
+  type: 
+  teacher: 
+  pupil: 

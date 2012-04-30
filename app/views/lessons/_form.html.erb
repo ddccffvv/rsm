@@ -1,0 +1,51 @@
+<%= form_for(@lesson) do |f| %>
+  <% if @lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+      <% @lesson.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <% if params[:teacher_id] %>
+  <% @teacher = Teacher.find(params[:teacher_id]) %>
+  <% end %>
+  <div class="field">
+    <%= f.label :teacher %><br />
+    <% if @teacher %>
+      <%= f.text_field :teacher, :value => @teacher.id %>
+    <% else %>
+      <%= f.collection_select(:teacher, Teacher.all, :id, :full_name) %>
+    <% end %>
+  </div>
+  <% if params[:pupil_id] %>
+  <% @pupil = Pupil.find(params[:pupil_id]) %>
+  <% end %>
+  <div class="field">
+    <%= f.label :pupil %><br />
+    <% if @pupil %>
+      <%= f.text_field :pupil, :value => @pupil.id %>
+    <% else %>
+      <%= f.collection_select(:pupil, Pupil.all, :id, :full_name) %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
