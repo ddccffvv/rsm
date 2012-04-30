@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.text_field :lesson_type %>
   </div>
   <% if params[:teacher_id] %>
   <% @teacher = Teacher.find(params[:teacher_id]) %>

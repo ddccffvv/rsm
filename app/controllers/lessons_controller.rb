@@ -45,7 +45,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
     @lesson.start = params[:lesson][:start]
     @lesson.end = params[:lesson][:end]
-    @lesson.lesson_type = params[:lesson][:type]
+    @lesson.lesson_type = params[:lesson][:lesson_type]
     @lesson.teacher = Teacher.find(params[:lesson][:teacher])
     @lesson.pupil = Pupil.find(params[:lesson][:pupil])
 
