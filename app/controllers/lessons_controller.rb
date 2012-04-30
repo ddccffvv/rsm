@@ -43,9 +43,9 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new
-    @lesson.start = DateTime.new
-    @lesson.end = DateTime.new
-    @lesson.type = params[:type]
+    @lesson.start = params[:lesson][:start]
+    @lesson.end = params[:lesson][:end]
+    @lesson.lesson_type = params[:lesson][:type]
     @lesson.teacher = Teacher.find(params[:lesson][:teacher])
     @lesson.pupil = Pupil.find(params[:lesson][:pupil])
 
