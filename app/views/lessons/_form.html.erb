@@ -19,10 +19,6 @@
     <%= f.label :end %><br />
     <%= f.datetime_select :end %>
   </div>
-  <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :lesson_type %>
-  </div>
   <% if params[:teacher_id] %>
   <% @teacher = Teacher.find(params[:teacher_id]) %>
   <% end %>
@@ -44,6 +40,10 @@
     <% else %>
       <%= f.collection_select(:pupil, Pupil.all, :id, :full_name) %>
     <% end %>
+  </div>
+  <div class="field">
+   <%= f.label :lesson_type %><br />
+   <%= f.collection_select(:lesson_type, LessonType.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

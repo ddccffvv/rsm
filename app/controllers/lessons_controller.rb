@@ -45,9 +45,9 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
     @lesson.start = params[:lesson][:start]
     @lesson.end = params[:lesson][:end]
-    @lesson.lesson_type = params[:lesson][:lesson_type]
     @lesson.teacher = Teacher.find(params[:lesson][:teacher])
     @lesson.pupil = Pupil.find(params[:lesson][:pupil])
+    @lesson.lesson_type = LessonType.find(params[:lesson][:lesson_type])
 
     respond_to do |format|
       if @lesson.save

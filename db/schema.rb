@@ -10,18 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430134306) do
+ActiveRecord::Schema.define(:version => 20120501185947) do
+
+  create_table "lesson_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.decimal  "hourly_rate", :precision => 8, :scale => 2
+  end
 
   create_table "lessons", :force => true do |t|
     t.datetime "start"
     t.datetime "end"
-    t.string   "lesson_type"
     t.integer  "teacher_id"
     t.integer  "pupil_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "lesson_type_id"
   end
 
+  add_index "lessons", ["lesson_type_id"], :name => "index_lessons_on_lesson_type_id"
   add_index "lessons", ["pupil_id"], :name => "index_lessons_on_pupil_id"
   add_index "lessons", ["teacher_id"], :name => "index_lessons_on_teacher_id"
 
