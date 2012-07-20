@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @course.name %>
+  <b>Pupil Name:</b>
+  <%= @course.pupil.full_name %>
 </p>
 
 <p>
@@ -12,7 +12,11 @@
 
 <p>
   <b>Min hours:</b>
-  <%= @course.course_type.min_minutes / 60 %>
+  <%= "#{@course.course_type.min_minutes / 60} (#{@course.course_type.min_minutes} minutes)" %>
+</p>
+<p>
+  <b>Payement details:</b>
+  <%= "amount y of total z, still to pay: x" %>
 </p>
 
 <p>
