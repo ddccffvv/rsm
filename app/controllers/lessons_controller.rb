@@ -27,6 +27,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
     @lesson.teacher = Teacher.find(params[:teacher_id]) if params[:teacher_id]
     @lesson.pupil = Pupil.find(params[:pupil_id]) if params[:pupil_id]
+    @lesson.lesson_type = LessonType.find(params[:lesson_type_id]) if params[:lesson_type_id]
 
     respond_to do |format|
       format.html # new.html.erb

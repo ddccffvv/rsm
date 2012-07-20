@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @course.name %>
+</p>
+
+<p>
+  <b>Course type:</b>
+  <%= @course.course_type.name %>
+</p>
+
+<p>
+  <b>Min hours:</b>
+  <%= @course.course_type.min_minutes / 60 %>
+</p>
+
+<p>
+  <b>Lessons:</b>
+  <%= @course.lessons %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

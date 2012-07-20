@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lesson_type.name %>
+</p>
+
+<p>
+  <b>Hourly rate:</b>
+  <%= @lesson_type.hourly_rate %>
+</p>
+
+
+<%= link_to 'Edit', edit_lesson_type_path(@lesson_type) %> |
+<%= link_to 'Back', lesson_types_path %>

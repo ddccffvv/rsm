@@ -43,7 +43,11 @@
   </div>
   <div class="field">
    <%= f.label :lesson_type %><br />
-   <%= f.collection_select(:lesson_type, LessonType.all, :id, :name) %>
+   <% if @lesson_type %>
+     <%= f.text_field :lesson_type, :value => @lesson_type.id %>
+    <% else %>
+     <%= f.collection_select(:lesson_type, LessonType.all, :id, :name) %>
+   <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

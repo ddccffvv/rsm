@@ -10,7 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501185947) do
+ActiveRecord::Schema.define(:version => 20120720152011) do
+
+  create_table "course_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "min_minutes"
+    t.decimal  "hourly_rate", :precision => 8, :scale => 2
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_type_id"
+    t.integer  "min_minutes"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "pupil_id"
+  end
+
+  add_index "courses", ["course_type_id"], :name => "index_courses_on_course_type_id"
+  add_index "courses", ["pupil_id"], :name => "index_courses_on_pupil_id"
 
   create_table "lesson_types", :force => true do |t|
     t.string   "name"
@@ -27,8 +47,10 @@ ActiveRecord::Schema.define(:version => 20120501185947) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "lesson_type_id"
+    t.integer  "course_id"
   end
 
+  add_index "lessons", ["course_id"], :name => "index_lessons_on_course_id"
   add_index "lessons", ["lesson_type_id"], :name => "index_lessons_on_lesson_type_id"
   add_index "lessons", ["pupil_id"], :name => "index_lessons_on_pupil_id"
   add_index "lessons", ["teacher_id"], :name => "index_lessons_on_teacher_id"

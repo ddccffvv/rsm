@@ -1,4 +1,8 @@
 Rijschoolmanager::Application.routes.draw do
+  resources :course_types
+
+  resources :courses
+
   resources :lesson_types
 
   resources :lessons

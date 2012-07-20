@@ -1,6 +1,6 @@
 class Lesson < ActiveRecord::Base
   belongs_to :teacher
-  belongs_to :pupil
-  has_one :lesson_type
-  attr_accessible :end, :start, :type, :teacher, :pupil
+  belongs_to :course
+  belongs_to :lesson_type
+  attr_accessible :end, :start, :type, :teacher, :course
 end
