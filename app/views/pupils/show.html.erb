@@ -10,15 +10,15 @@
   <%= @pupil.first_name %>
 </p>
 <p>
-  <b>Lessons:</b>
+  <b>Courses:</b>
   <ol>
-  <% @pupil.lessons.each do |lesson| %>
-      <li> <%= lesson.teacher.full_name %> </li>
+  <% @pupil.courses.each do |course| %>
+      <li> <%= link_to course.course_type.name, course_path(course) %> | <%= link_to 'Add Lesson', new_course_lesson_path(course) %></li>
   <% end %>
   </ol>
 </p>
 
 
-<%= link_to 'New Lesson', new_pupil_lesson_path(@pupil) %> |
+<%= link_to 'New Course', new_pupil_course_path(@pupil) %> |
 <%= link_to 'Edit', edit_pupil_path(@pupil) %> |
 <%= link_to 'Back', pupils_path %>

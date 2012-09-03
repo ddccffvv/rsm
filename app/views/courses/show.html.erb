@@ -15,14 +15,33 @@
   <%= "#{@course.course_type.min_minutes / 60} (#{@course.course_type.min_minutes} minutes)" %>
 </p>
 <p>
-  <b>Payement details:</b>
-  <%= "amount y of total z, still to pay: x" %>
+  <b>Payment details:</b>
+  <%= "amount €#{@course.already_paid} of total €#{@required_payment} , still to pay: €#{@required_payment - @course.already_paid}" %>
 </p>
 
 <p>
   <b>Lessons:</b>
-  <%= @course.lessons %>
 </p>
+<table class="table table-bordered">
+<tr>
+<th>#</th>
+<th>Begin</th>
+<th>End</th>
+<th></th>
+<th></th>
+</tr>
+<% @course.lessons.each_with_index do |lesson, index| %>
+<tr>
+<td><%= index %></td>
+<td><%= lesson.start %></td>
+<td><%= lesson.end %></td>
+<td><%= lesson.lesson_type %></td>
+<td><%= link_to 'Show', lesson %></td>
+<td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+<td><%= link_to 'Destroy', lesson, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+</table>
 
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

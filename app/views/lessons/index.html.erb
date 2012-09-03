@@ -18,7 +18,7 @@
     <td><%= lesson.end %></td>
     <td><%= lesson.lesson_type %></td>
     <td><%= lesson.teacher.name %> <%= lesson.teacher.first_name %></td>
-    <td><%= lesson.pupil.name + " " + lesson.pupil.first_name %> </td>
+    <td><%= lesson.course.pupil.full_name%> </td>
     <td><%= link_to 'Show', lesson %></td>
     <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
     <td><%= link_to 'Destroy', lesson, :confirm => 'Are you sure?', :method => :delete %></td>

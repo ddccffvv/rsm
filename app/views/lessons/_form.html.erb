@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start %><br />
-    <%= f.datetime_select :start %>
+    <%= f.label :start_time %><br />
+    <%= f.text_field :start%>
   </div>
   <div class="field">
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
+    <%= f.label :end_time %><br />
+    <%= f.text_field :end%>
   </div>
   <% if params[:teacher_id] %>
   <% @teacher = Teacher.find(params[:teacher_id]) %>
@@ -30,24 +30,16 @@
       <%= f.collection_select(:teacher, Teacher.all, :id, :full_name) %>
     <% end %>
   </div>
-  <% if params[:pupil_id] %>
-  <% @pupil = Pupil.find(params[:pupil_id]) %>
+  <% if params[:course_id] %>
+  <% @course = Course.find(params[:course_id]) %>
   <% end %>
   <div class="field">
     <%= f.label :pupil %><br />
-    <% if @pupil %>
-      <%= f.text_field :pupil, :value => @pupil.id %>
+    <% if @course %>
+      <%= f.text_field :course, :value => @course.id %>
     <% else %>
-      <%= f.collection_select(:pupil, Pupil.all, :id, :full_name) %>
+      <%= f.collection_select(:course, Course.all, :id, :long_name) %>
     <% end %>
-  </div>
-  <div class="field">
-   <%= f.label :lesson_type %><br />
-   <% if @lesson_type %>
-     <%= f.text_field :lesson_type, :value => @lesson_type.id %>
-    <% else %>
-     <%= f.collection_select(:lesson_type, LessonType.all, :id, :name) %>
-   <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

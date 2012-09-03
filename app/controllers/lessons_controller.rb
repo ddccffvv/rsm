@@ -47,8 +47,7 @@ class LessonsController < ApplicationController
     @lesson.start = params[:lesson][:start]
     @lesson.end = params[:lesson][:end]
     @lesson.teacher = Teacher.find(params[:lesson][:teacher])
-    @lesson.pupil = Pupil.find(params[:lesson][:pupil])
-    @lesson.lesson_type = LessonType.find(params[:lesson][:lesson_type])
+    @lesson.course = Course.find(params[:lesson][:course])
 
     respond_to do |format|
       if @lesson.save
@@ -67,7 +66,11 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
 
     respond_to do |format|
-      if @lesson.update_attributes(params[:lesson])
+      @lesson.start = params[:lesson][:start]
+      @lesson.end = params[:lesson][:end]
+      @lesson.teacher = Teacher.find(params[:lesson][:teacher])
+      @lesson.course = Course.find(params[:lesson][:course])
+      if @lesson.save
         format.html { redirect_to @lesson, :notice => 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else

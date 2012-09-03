@@ -2,16 +2,16 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Pupil Name</th>
     <th>Course type</th>
     <th>Min hours</th>
   </tr>
 
 <% @courses.each do |course| %>
   <tr>
-    <td><%= course.name %></td>
-    <td><%= course.course_type %></td>
-    <td><%= course.min_minutes / 60 %></td>
+    <td><%= course.pupil.full_name %></td>
+    <td><%= course.course_type.name %></td>
+    <td><%= course.course_type.min_minutes / 60 %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -22,3 +22,6 @@
 <br />
 
 <%= link_to 'New Course', new_course_path %>
+<% if @pupil %>
+<%= link_to 'Back', pupil_path(@pupil)%>
+<%end%>

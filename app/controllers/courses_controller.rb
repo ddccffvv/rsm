@@ -2,7 +2,12 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    if params[:pupil_id]
+      @pupil = Pupil.find(params[:pupil_id])
+      @courses = @pupil.courses
+    else
+      @courses = Course.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +19,13 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
+    @required_hours = @course.course_type.min_minutes / 60
+    @completed_hours = 3
+    @required_payment = @required_hours * @course.course_type.hourly_rate
+    if not @course.already_paid
+      @course.already_paid = 0
+    end
+
 
     respond_to do |format|
       format.html # show.html.erb

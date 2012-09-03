@@ -1,18 +1,24 @@
 Rijschoolmanager::Application.routes.draw do
   resources :course_types
 
-  resources :courses
-
   resources :lesson_types
 
   resources :lessons
 
   resources :pupils do
-	resources :lessons
+    resources :courses
+  end
+
+  resources :courses do
+      resources :lessons
   end
 
   resources :teachers do
 	resources :lessons
+  end
+
+  resources :course_types do
+    resources :courses
   end
 
   # The priority is based upon order of creation:

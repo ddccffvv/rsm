@@ -12,17 +12,17 @@
 
 <p>
   <b>Type:</b>
-  <%= @lesson.lesson_type_id %>
+  <%= @lesson.course.course_type.name %>
 </p>
 
 <p>
   <b>Teacher:</b>
-  <%= @lesson.teacher %>
+  <%= @lesson.teacher.full_name %>
 </p>
 
 <p>
   <b>Pupil:</b>
-  <%= @lesson.pupil %>
+  <%= @lesson.course.pupil.full_name %>
 </p>
 
 

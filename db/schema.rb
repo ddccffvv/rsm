@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720152011) do
+ActiveRecord::Schema.define(:version => 20120831163641) do
 
   create_table "course_types", :force => true do |t|
     t.string   "name"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20120720152011) do
     t.string   "name"
     t.integer  "course_type_id"
     t.integer  "min_minutes"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "pupil_id"
+    t.decimal  "already_paid",   :precision => 2, :scale => 8
   end
 
   add_index "courses", ["course_type_id"], :name => "index_courses_on_course_type_id"
