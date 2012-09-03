@@ -17,7 +17,7 @@ group :assets do
 end
 
 gem 'bootstrap-sass', '2.0.4'
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails'
 
 group :production do
   gem 'pg', '0.12.2'
